@@ -1,0 +1,37 @@
+#app, html {
+  height: 100%;
+}
+body{
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+}
+.sidebar-container {
+  -webkit-transition: width .28s;
+  transition: width .28s;
+  width: 180px!important;
+  height: 100%;
+  position: fixed;
+  font-size: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+  overflow: hidden;
+}
+#app .hideSidebar .sidebar-container {
+  width: 36px!important;
+}
+
+.main-container {
+  min-height: 100%;
+  -webkit-transition: margin-left .28s;
+  transition: margin-left .28s;
+  margin-left: 180px;
+  position: relative;
+}
+#app .hideSidebar .main-container {
+  margin-left: 36px;
+}
