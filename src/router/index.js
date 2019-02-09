@@ -8,10 +8,13 @@ import Layout from '../views/mainLayout/Layout.vue';
 import loginPage from '../views/Login/Login.vue';
 import ProductsPage from '../views/ProductsPage.vue';
 import ProductsChildren from '../views/ProductsChildren.vue';
+import UsersPage from '../views/UsersPage.vue';
+import ProfilePage from '../views/ProfilePage.vue';
+import SettingsPage from '../views/SettingsPage.vue';
 
 import NotFound from '../views/_404.vue';
 
-import { isAuthenticated, isNotAuthenticated } from '../utils/helpers'
+import { isAuthenticated, isNotAuthenticated , canAccess } from '../utils/helpers'
 
 export const routes = [
     {
@@ -29,8 +32,8 @@ export const routes = [
                 component: Home,
                 meta:{
                     breadcrumb: {
-                            title: "Home"
-                        }
+                        title: "Home"
+                    }
                 },
             },
             {
@@ -39,8 +42,8 @@ export const routes = [
                 component: ProductsPage,
                 meta:{
                     breadcrumb: {
-                            title: "Products"
-                        }
+                        title: "Products"
+                    }
                 },
                 children: [
                     {
@@ -49,11 +52,44 @@ export const routes = [
                         component: ProductsChildren,
                         meta:{
                             breadcrumb: {
-                                    title: "ProductsChildren",
-                                },
+                                title: "productsadd",
+                            },
                         },
                     }
                 ]
+            },
+            {
+                path: "/users",
+                name: "users",
+                component: UsersPage,
+                beforeEnter: canAccess,
+                meta:{
+                    breadcrumb: {
+                        title: "users"
+                    },
+                    role:['Owner']
+                },
+
+            },
+            {
+                path: '/profile',
+                name: 'profile',
+                component: ProfilePage,
+                meta:{
+                    breadcrumb: {
+                        title: "Profile"
+                    },
+                }
+            },
+            {
+                path: '/settings',
+                name: 'settings',
+                component: SettingsPage,
+                meta:{
+                    breadcrumb: {
+                        title: "Settings"
+                    },
+                }
             },
         ]
     },
@@ -61,15 +97,10 @@ export const routes = [
         path: '/login',
         name: 'login',
         component: loginPage,
-        meta:{
-            breadcrumb: [
-                {
-                    name: "Admin",
-                    link: "admin"
-                },
-                {
-                    name: "Login"
-                }]
+        meta: {
+            breadcrumb: {
+                title: "Login"
+            },
         },
         beforeEnter: isNotAuthenticated
     },

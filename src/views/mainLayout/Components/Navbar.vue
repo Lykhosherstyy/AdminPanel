@@ -1,7 +1,8 @@
 <template>
-	<div class="navbar-container">
+	<div class="navbar-container d-flex">
 		<hamburger :toggle-click="toogleSidebar" :is-active="sidebar.opened" class="hamburger-container"/>
-		<breadcrumb class="breadcrumb-container"/>
+		<breadcrumb />
+		<lang-switcher></lang-switcher>
 		<profile-menu />
 		<!--<div class="avatar-container" @click="toogleSidebar">df</div>-->
 	</div>
@@ -12,12 +13,14 @@
 		import Hamburger from '../../../components/Hamburger.vue'
     import Breadcrumb from '../../../components/Breadcrumb.vue';
     import ProfileMenu from '../../../components/ProfileMenu.vue'
+    import LangSwitcher from '../../../components/LangSwitcher.vue'
     export default {
         name: "Navbar",
 				components:{
             Hamburger,
             Breadcrumb,
-            ProfileMenu
+            ProfileMenu,
+            LangSwitcher
 				},
         computed: {
             ...mapGetters([
@@ -34,7 +37,8 @@
 
 <style lang="scss" scoped>
 	.navbar-container{
-		display: flex;
-		flex-direction: row;
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 1px solid rgba(0,0,0,0.2);
 	}
 </style>

@@ -1,20 +1,17 @@
 <template>
 	<div class="login-container">
-
-		<b-form @submit.prevent="handleSubmit" class="login-form">
-			<div class="title">Login</div>
-			<div class="form-group">
-				<!--<label htmlFor="username">Username</label>-->
+		<h1 class="title">Login</h1>
+		<form  class="login-form" @submit.prevent="handleSubmit" >
+			<div class="form-item">
 				<input type="text" v-model="username" name="username" placeholder="Username" class="form-control"/>
 			</div>
-			<div class="form-group">
-				<!--<label htmlFor="password">Password</label>-->
+			<div class="form-item">
 				<input type="password" v-model="password" name="password" placeholder="Password" class="form-control"/>
 			</div>
-			<div class="form-group">
-				<b-button variant="success" type="submit" :block="true" >Login</b-button>
+			<div class="form-item">
+				<button type="submit" class="btn btn-submit btn-block">Login</button>
 			</div>
-		</b-form>
+		</form>
 	</div>
 </template>
 

@@ -9,7 +9,7 @@ const state = {
 
 const getters = {
     isAuthenticated: state => !!state.token,
-    role:state => !!state.roles,
+    role:state => state.role,
     loading: state => state.loading,
 }
 
@@ -31,7 +31,14 @@ const actions = {
                     reject(err)
                 })
         })
-    }
+    },
+    'LOGOUT': ({commit, dispatch}, user) => {
+        return new Promise((resolve, reject) => {
+            commit('UNSET_TOKEN')
+            commit('UNSET_ROLE')
+            resolve()
+        })
+    },
 }
 
 const mutations = {
@@ -40,6 +47,12 @@ const mutations = {
     },
     SET_ROLE:(state, role) => {
         state.role = role
+    },
+    UNSET_TOKEN:(state) =>{
+        state.token = storage.remove('user-token')
+    },
+    UNSET_ROLE:(state) =>{
+        state.role = storage.remove('role')
     },
     LOADING_START: (state) => {
         state.loading = 'loading'

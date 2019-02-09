@@ -38,8 +38,8 @@
 <style lang="scss" scoped>
 	.breadcrumb-container{
 		display: inline-block;
+		height: 50px;
 		font-size: 14px;
-		line-height: 50px;
 		margin-left: 10px;
 	}
 </style>

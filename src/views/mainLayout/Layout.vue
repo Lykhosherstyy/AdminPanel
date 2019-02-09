@@ -4,8 +4,7 @@
 		<sidebar class="sidebar-container"/>
 		<div class="main-container">
 			<navbar/>
-			<router-view class="animated fadeIn"/>
-			<!--<app-main/>-->
+			<app-main/>
 		</div>
 	</div>
 </template>
@@ -13,12 +12,13 @@
 <script>
 	import Navbar from './Components/Navbar.vue'
   import Sidebar from './Components/Sidebar.vue'
+  import AppMain from './Components/AppMain.vue'
     export default {
         name: 'Layout',
         components: {
             Navbar,
             Sidebar,
-            // AppMain,
+            AppMain,
         },
         computed: {
             sidebar() {

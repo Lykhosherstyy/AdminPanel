@@ -31,6 +31,12 @@ module.exports = {
                 ]
             },
             {
+                test: /\.(jpg|png)$/,
+                use: {
+                    loader: "file-loader",
+                }
+            },
+            {
                 test: /\.scss$/,
                 use: [
                     'vue-style-loader',
@@ -52,7 +58,7 @@ module.exports = {
                                   @import "./assets/scss/_mixins.scss";
                             `
                         }
-                    }
+                    },
                 ]
             }
         ]

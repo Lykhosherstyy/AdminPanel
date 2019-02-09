@@ -1,0 +1,26 @@
+.table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  background-color: transparent;
+
+  th,
+  td {
+    padding: 15px;
+    text-overflow: ellipsis;
+    border-top: 1px solid $table-border-color;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: 2px solid $table-border-color;
+  }
+
+  .table {
+    background-color: transparent;
+  }
+}

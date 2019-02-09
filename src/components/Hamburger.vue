@@ -27,6 +27,7 @@
 <style lang="scss" scoped>
 	.hamburger-container{
 		display: inline-block;
+		height: 50px;
 	}
 	.hamburger {
 		height: 50px;

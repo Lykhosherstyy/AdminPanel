@@ -1,67 +1,99 @@
 <template>
-	<div id="con" class="profile-menu-container">
-		<a href="#" v-on:click.prevent="showDropDown=!showDropDown">
-			<div>Catness</div>
-			<img src="" alt="avatar">
-			<i :class="{ 'fa-caret-up': showDropDown, 'fa-caret-down': !showDropDown }" class="fa" aria-hidden="true"></i>
-		</a>
-		<transition name="slide-fade">
-			<div class="w4 mt1" v-if="showDropDown" v-click-outside="closeEvent">
-				<ul class="menu list pl0 pa0 ma0">
-					<li v-for="link in links" class="list">
-						<a href="#" class="dd-link pointer hover-bg-moon-gray">{{link.name}}</a>
-					</li>
-				</ul>
+	<div class="user-menu-container">
+		<el-dropdown>
+			<div class="user-details d-flex flex-align">
+				<span class="user-role">{{ getRole }}</span>
+				<img src="../static/img/root_profile_img.jpg" class="user-avatar" alt="avatar">
+				<span class="dropdown-caret" :class="{up: isActive}"></span>
 			</div>
-		</transition>
+
+			<el-dropdown-menu slot="dropdown">
+				<el-dropdown-item>
+					<router-link to="profile" class="bl-link profile-link">{{ $t("profile.index") }}</router-link>
+				</el-dropdown-item>
+				<el-dropdown-item>
+					<router-link to="settings" class="bl-link profile-link">{{ $t("profile.settings") }}</router-link>
+				</el-dropdown-item>
+				<el-dropdown-item divided>
+					<a class="bl-link profile-link" @click="logout">{{ $t("profile.logout") }}</a>
+				</el-dropdown-item>
+			</el-dropdown-menu>
+		</el-dropdown>
 	</div>
 </template>
 
 <script>
+    import ElDropdown from '../components/ElDropdown.vue'
+    import ElDropdownMenu from '../components/ElDropdownMenu.vue'
+    import ElDropdownItem from '../components/ElDropdownItem.vue'
 
     export default {
         name: "ProfileMenu",
+				components:{
+            ElDropdown,
+            ElDropdownMenu,
+            ElDropdownItem
+				},
         data() {
             return {
-                showDropDown: false,
-                links: [
-                    {
-                        name: "Account"
-                    },
-                    {
-                        name: "Profile"
-                    },
-                    {
-                        name: "Logout"
-                    }
-                ]
+                isActive: false,
             };
         },
-        methods: {
-            closeEvent: function () {
-                this.showDropDown = false
+				computed:{
+            getRole(){
+                return this.$store.getters.role;
+						}
+
+				},
+				mounted(){
+            this.$on('toggle-open', this.toggleisActive);
+				},
+				methods:{
+            toggleisActive(){
+                this.isActive = !this.isActive;
+						},
+            logout(){
+                this.$store.dispatch('LOGOUT').then(() => {
+                    console.log('logout');
+                    this.$router.push('/login');
+                })
+
             }
-        }
+				},
+				watch:{
+            isActive() {
+
+						}
+				}
     }
 </script>
 
 <style lang="scss" scoped>
-	.profile-menu-container{
-		margin-left: auto;
+	.user-menu-container{
+		position: relative;
+		height: 50px;
+		margin-left: 20px;
 		margin-right: 50px;
+		align-self: center;
 	}
-	.slide-fade-enter-active {
-		transition: all .3s ease;
+	.user-role{
+		padding: 0 5px;
+		font-size: 12px;
+		font-weight: bold;
 	}
-	.slide-fade-leave-active {
+	.user-avatar{
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+	}
+	.profile-link{
+		padding: 0 10px;
+		color: #000;
 		transition: all .2s ease;
-	}
-	.slide-fade-enter {
-		transform: translateY(-50px);
-		opacity: 0;
-	}
-	.slide-fade-leave-to {
-		transform: translateY(-50px);
-		opacity: 0;
+		&:hover{
+			color: #fff;
+			background-color: #1f2d3d;
+		}
 	}
 </style>

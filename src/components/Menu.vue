@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<nav>
-			<ul role="menubar" class="nav flex-column">
+			<ul role="menubar" class="nav sidebar-nav flex-column">
 				<template v-for="(route, index) in app.menu">
 					<menu-item v-if="canAccess(route)" :item="route" :index="index" />
 				</template>
@@ -35,7 +35,5 @@
 </script>
 
 <style lang="scss" scoped>
-	.nav{
-		background-color: rgb(48, 65, 86);
-	}
+
 </style>

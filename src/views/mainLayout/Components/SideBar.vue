@@ -21,5 +21,7 @@
 		overflow: scroll;
 		overflow-x: hidden;
 		height: 100%;
+		margin-right: -17px;
+		background: grey;
 	}
 </style>

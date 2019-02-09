@@ -1,12 +1,22 @@
+@import "common";
+@import "components/_menu";
+@import "components/_modal";
+@import "components/button";
+@import "components/table";
+@import "components/form";
+
 #app, html {
   height: 100%;
+}
+* {
+  box-sizing: border-box;
 }
 body{
   height: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif;
+  font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 .sidebar-container {
   -webkit-transition: width .28s;
@@ -32,6 +42,15 @@ body{
   margin-left: 180px;
   position: relative;
 }
+.app-container{
+  padding: 20px;
+}
 #app .hideSidebar .main-container {
   margin-left: 36px;
+}
+
+// page
+
+.top-container{
+  margin: 0 0 20px;
 }

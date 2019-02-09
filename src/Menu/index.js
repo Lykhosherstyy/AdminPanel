@@ -2,21 +2,26 @@ export default [
     {
         name: 'Home',
         path: '/home',
-        icon: 'icon-home',
+        icon: 'home',
         permisions: []
     },
     {
         name: 'Products',
         path: '/products',
-        icon: 'icon-home',
-        permisions: ['Admin', 'Manager'],
+        icon: 'list-ul',
+        permisions: ['Owner', 'Admin', 'Manager'],
         children:[
             {
-                name: 'ADDPRODUCTS',
+                name: 'productsAdd',
                 path: '/products/add',
-                icon: 'icon-home',
                 permisions: []
             },
         ]
+    },
+    {
+        name: "users",
+        path: "/users",
+        icon: 'users',
+        permisions: ['Owner']
     },
 ]

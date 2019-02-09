@@ -21,6 +21,11 @@ const actions = {
             commit('TOGGLE_SIDEBAR')
         })
     },
+    'SET_LANGUAGE': ({commit}, language) => {
+        return new Promise((resolve, reject) => {
+            commit('SET_LANGUAGE', language)
+        })
+    },
     'CLOSE_SIDEBAR': ({commit}) => {
         return new Promise((resolve, reject) => {
             commit('CLOSE_SIDEBAR')
@@ -33,6 +38,10 @@ const mutations = {
     TOGGLE_SIDEBAR: (state) => {
         storage.set('sidebar', !state.sidebar.opened)
         state.sidebar.opened = !state.sidebar.opened
+    },
+    SET_LANGUAGE: (state, lang) => {
+        storage.set('language', lang)
+        state.language = lang;
     },
     CLOSE_SIDEBAR: (state) => {
         storage.set('sidebar', false)
